@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33801.468
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PdfExportApp", "PdfExportApp\PdfExportApp.csproj", "{A074B973-D330-465D-B996-143B8E35DB3B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Providers", "Providers", "{6A1B1C56-9DD3-4979-BE67-715FFB0492C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PdfExportApp.DinkToPdfProvider", "PdfExportApp.DinkToPdfProvider\PdfExportApp.DinkToPdfProvider.csproj", "{CABA9A2A-37A6-420A-8372-6789C621C57A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PdfExportApp.Domain", "PdfExportApp.Domain\PdfExportApp.Domain.csproj", "{834DA6AA-959B-4FA7-B61B-7AABD77056FB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A074B973-D330-465D-B996-143B8E35DB3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A074B973-D330-465D-B996-143B8E35DB3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A074B973-D330-465D-B996-143B8E35DB3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A074B973-D330-465D-B996-143B8E35DB3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CABA9A2A-37A6-420A-8372-6789C621C57A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CABA9A2A-37A6-420A-8372-6789C621C57A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CABA9A2A-37A6-420A-8372-6789C621C57A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CABA9A2A-37A6-420A-8372-6789C621C57A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{834DA6AA-959B-4FA7-B61B-7AABD77056FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{834DA6AA-959B-4FA7-B61B-7AABD77056FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{834DA6AA-959B-4FA7-B61B-7AABD77056FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{834DA6AA-959B-4FA7-B61B-7AABD77056FB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CABA9A2A-37A6-420A-8372-6789C621C57A} = {6A1B1C56-9DD3-4979-BE67-715FFB0492C0}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1AF856BB-8E6A-40EB-8877-0E329CEFA86C}
+	EndGlobalSection
+EndGlobal

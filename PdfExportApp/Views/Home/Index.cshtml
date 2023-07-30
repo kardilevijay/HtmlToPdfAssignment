@@ -1,0 +1,164 @@
+﻿@{
+    Layout = "~/Views/Shared/_MyCustomLayout.cshtml";
+}
+
+<button id="generatePdfButton">Export to PDF</button>
+
+<base href="@string.Format("{0}://{1}", Context.Request.Scheme, Context.Request.Host)" />
+
+<div>
+    <div>
+        <table cellspacing="0" cellpadding="0">
+            <tr>
+                <td>
+                    Serial. 1
+                </td>
+                <td>
+                    Photo Num
+                </td>
+                <td>
+                    06-06-2023
+                </td>
+                <td>
+                    Facade Type : Concrete
+                </td>
+                <td>
+                    Elevation : South
+                </td>
+                <td>
+                    Floor: 2
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Defects: 5
+                </td>
+                <td colspan="2">
+                    Defective Paint
+                </td>
+
+                <td>
+                    Latitude 0.00000000
+                </td>
+                <td>
+                    Longitude 0.00000000
+                </td>
+                <td>
+                    Altitude 7.60m
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <img src="~/img/image.bmp" style="width:1200px; height:500px" />
+    </div>
+    <div>
+        <table style="table-layout: fixed">
+            <tr>
+                <td style="border:none">
+                    <table cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td>
+                                Defect #1234
+                            </td>
+                            <td>
+                                Type: Defective Paint
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                Action Required : To check defect close up to confirm above
+                            </td>
+                        </tr>
+                        <tr></tr>
+                        <tr>
+                            <td colspan="2">
+                                Description : Holes of rivits Holes of rivits Holes of rivits Holes of rivits Holes of rivits
+                            </td>
+                        </tr>
+
+                    </table>
+                </td>
+                <td style="border:none">
+
+                    <table cellspacing="0" cellpadding="0" style="">
+                        <tr>
+                            <td>
+                                Severity Safe : a Required Remedial : 4
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Charateristic : Peformance: “ Structural"
+                            </td>
+                        </tr>
+                        <tr></tr>
+                        <tr>
+                            <td>
+                                FI Notes: Do immidiate...
+                            </td>
+                        </tr>
+                        <tr></tr>
+                        <tr></tr>
+
+                    </table>
+                </td>
+                <td style="border:none">
+                    <img src="~/img/image.bmp" style="height:90px; width: 100%">
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+
+        function sendHtmlAsPostRequest() {
+
+            var htmlContent = getPageHtmlContent();
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/Home/GeneratePdf", true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.responseType = "blob"; // Set the response type to blob
+
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    var pdfBlob = new Blob([xhr.response], { type: 'application/pdf' });
+
+                    // Create an anchor element to initiate the download
+                    var downloadLink = document.createElement('a');
+                    downloadLink.href = URL.createObjectURL(pdfBlob);
+                    downloadLink.download = 'exported_file.pdf';
+                    document.body.appendChild(downloadLink);
+
+                    downloadLink.click();
+
+                    URL.revokeObjectURL(downloadLink.href);
+                } else {
+                    console.error("Error:", xhr.status, xhr.statusText);
+                }
+            };
+
+            xhr.onerror = function () {
+                console.error("Error:", xhr.status, xhr.statusText);
+            };
+
+            xhr.send(JSON.stringify({ htmlContent: htmlContent }));
+
+            function getPageHtmlContent() {
+                document.getElementById('generatePdfButton').style.visibility = 'hidden';
+                var htmlContent = document.documentElement.outerHTML;
+                document.getElementById('generatePdfButton').style.visibility = 'visible';
+                return htmlContent;
+            }
+        }
+
+        document.getElementById('generatePdfButton').addEventListener('click', function () {
+            sendHtmlAsPostRequest();
+        });
+    </script>
+
+}
